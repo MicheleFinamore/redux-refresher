@@ -6,7 +6,7 @@ import { Fragment, useEffect } from "react";
 import { uiActions } from "./store/ui-slice";
 import Notification from "./components/UI/Notification";
 
-let isInitial = true;
+let isInitial = true; //variabile per controllare lo stato iniziale
 
 function App() {
   const showCart = useSelector((state) => state.ui.cartIsVisible); // estraggo lo slice che mi serve e prendo la proprietà del suo state
