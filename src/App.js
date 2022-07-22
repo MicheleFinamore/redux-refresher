@@ -4,7 +4,7 @@ import Products from "./components/Shop/Products";
 import { useSelector, useDispatch } from "react-redux";
 import { Fragment, useEffect } from "react";
 import Notification from "./components/UI/Notification";
-import { sendCartData } from "./store/cart-slice";
+import { sendCartData, fetchCartData } from "./store/cart-actions";
 
 let isInitial = true; //variabile per controllare lo stato iniziale
 
@@ -20,8 +20,14 @@ function App() {
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCartData());
+  }, [dispatch]);
 
   return (
     <Fragment>
